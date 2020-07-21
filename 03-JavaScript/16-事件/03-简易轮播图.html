@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 670px;
+            border: 1px solid #000;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        div>img {
+            vertical-align: bottom;
+        }
+
+        div>i {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            position: absolute;
+            top: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+        }
+
+        div>i:nth-of-type(1) {
+            left: 0;
+        }
+
+        div>i:nth-of-type(2) {
+            right: 0;
+        }
+
+        div:hover i {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <img src="./images/ad1.jpg" alt="">
+        <i class="iconfont icon-changyongicon-1"></i>
+        <i class="iconfont icon-changyongicon-"></i>
+    </div>
+    <script>
+        let i = document.querySelectorAll('i'),
+            oImg = document.querySelector('img'),
+            arr = [
+                './images/ad1.jpg',
+                './images/ad2.jpg',
+                './images/ad3.jpg',
+                './images/ad4.jpg',
+                './images/ad5.jpg'
+            ],
+            currentIndex = 0,
+            maxIndex = arr.length - 1;
+        i[0].addEventListener(
+            'click',
+            function () {
+                currentIndex--;
+                if (currentIndex < 0) {
+                    currentIndex = maxIndex;
+                }
+                oImg.src = arr[currentIndex];
+            },
+            false
+        );
+        i[1].addEventListener(
+            'click',
+            function () {
+                currentIndex++;
+                if (currentIndex > maxIndex) {
+                    currentIndex = 0;
+                }
+                oImg.src = arr[currentIndex];
+            },
+            false
+        );
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box1 {
+            width: 670px;
+            margin: 100px auto;
+            border: 1px solid #000;
+            box-sizing: border-box;
+        }
+
+        .box1 ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .box1 ul img {
+            width: 120px;
+            vertical-align: bottom;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1">
+        <img src="./images/ad1.jpg" alt="">
+        <ul>
+            <li><a href="#"><img src="./images/ad1.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/ad2.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/ad3.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/ad4.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/ad5.jpg" alt=""></a></li>
+        </ul>
+    </div>
+    <script>
+        let lis = document.querySelectorAll('li'),
+            oImg = document.querySelector('img');
+        for (const value of lis) {
+            value.addEventListener(
+                'click',
+                function () {
+                    // console.log(this.firstElementChild.firstElementChild.src);
+                    oImg.src = this.firstElementChild.firstElementChild.src;
+                },
+                false
+            );
+        }
+
+    </script>
+</body>
+
+</html>

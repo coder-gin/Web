@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // function a() {
+        //     function b() {
+        //         var bbb = 234;
+        //         console.log(aaa); // 123
+        //     }
+        //     var aaa = 123;
+        //     return b;
+        // }
+        // var glob = 100;
+        // console.log(demo); // undefined
+        // // console.log(b); //也报错
+        // var demo = a();
+        // console.log(demo); // function b() {...}
+        // // console.log(b); // 打印b会报错
+        // demo();
+
+
+
+        // function a() {
+        //     var num = 100;
+        //     function b() {
+        //         num++;
+        //         console.log(num);
+        //     }
+        //     return b;
+        // }
+        // var demo = a();
+        // demo(); // 101 
+        // demo(); // 102
+
+
+
+
+        // function test() {
+        //     var num = 100;
+        //     function a() {
+        //         num++;
+        //         console.log(num);
+        //     }
+        //     function b() {
+        //         num--;
+        //         console.log(num);
+        //     }
+        //     return [a, b];
+        // }
+        // var myArr = test();
+        // myArr[0]();
+        // myArr[1]();
+
+
+
+
+        // function test() {
+        //     var food = 'apple';
+        //     var obj = {
+        //         eatFood: function () {
+        //             if (food != '') {
+        //                 console.log(food);
+        //                 food = '';
+        //             } else {
+        //                 console.log('There is nothing!empty!');
+        //             }
+        //         },
+        //         pushFood: function (myFood) {
+        //             food = myFood;
+        //         }
+        //     }
+        //     return obj;
+        // }
+        // var person = test();
+        // person.eatFood();
+        // person.eatFood();
+        // person.pushFood('banana');
+        // person.eatFood();
+
+
+
+
+
+        // for (var i = 0; i < 10; i++) {
+        //     console.log(i);
+        // }
+        // console.log(i);
+
+
+
+
+
+        // function test() {
+        //     var arr = [];
+        //     for (var i = 0; i < 10; i++) {
+        //         arr[i] = function () {
+        //             console.log(i);
+        //         }
+        //     }
+        //     // console.log(i); // 10
+        //     return arr;
+        // }
+        // var myArr = test();
+        // for (var j = 0; j < 10; j++) {
+        //     myArr[j]();
+        // }
+        // 我们让上面这个变成打印 0,1,2,3,4,5,6,7,8,9，用立即执行函数解决
+        // function test() {
+        //     var arr = [];
+        //     for (var i = 0; i < 10; i++) {
+        //         (function (j) {
+        //             arr[j] = function () {
+        //                 console.log(j);
+        //             }
+        //         }(i));
+        //     }
+        //     console.log(arr);
+        //     return arr;
+        // }
+        // var myArr = test();
+        // for (var j = 0; j < 10; j++) {
+        //     myArr[j]();
+        // }
+
+
+
+
+
+
+
+        var x = 1;
+        if (function f() { }) {
+            x += typeof f;
+        }
+        console.log(x); // 1undefined
+    </script>
+</body>
+
+</html>

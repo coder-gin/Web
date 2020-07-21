@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="https://www.baidu.com">
+        <!--明文输入框-->
+        账号:<input type="text" name="aa"><br>
+        <!--暗文输入框-->
+        密码:<input type="password"><br>
+        <!--给输入框设置默认值-->
+        账号:<input type="text" value="zs"><br>
+        密码:<input type="password" value="123"><br>
+
+        <!--
+        单选框
+        注意点:
+        1.默认情况下单选框不会互斥, 要想单选框互斥那么必须给每一个单选框标签都设置一个name属性, 然后name属性还必须设置相同的值
+        2.要想让单选框默认选中某一个框子, 那么可以给input标签添加一个checked属性
+        3.在HTML中如果属性的取值和属性的名称一样, 可以只写一个. 但是在XHTML中必须写上取值, 所以在企业开发中我们推荐大家不要省略取值
+        -->
+        性别:
+        <input type="radio" name="xx" checked>男
+        <input type="radio" name="xx">女
+        <input type="radio" name="xx">保密<br>
+
+        <!--多选框-->
+        爱好:
+        <input type="checkbox">篮球
+        <input type="checkbox">足球
+        <input type="checkbox" checked="checked">羽毛球
+        <input type="checkbox" checked="checked">乒乓球<br>
+        <!--
+    定义一个普通按钮
+    作用:配合JS完成一些操作
+    -->
+        <input type="button" value="我是按钮" onclick="alert('zs')"><br><br>
+
+        <!--
+    定义一个图片按钮
+    作用:配合JS完成一些操作
+    -->
+        <input type="image" src="../images/register.jpg" onclick="alert('zs')"><br>
+
+        <!--
+    定义重置按钮
+    作用:清空表单中的数据
+    注意点:
+    重置按钮有默认的按钮标题, 默认叫做 重置
+    也可以通过value属性来修改默认标题
+    -->
+        <input type="reset" value="清空">
+
+        <!--
+    定义提交按钮
+    作用:将表单中的数据提交到远程服务器
+    注意点:
+    要想把表单中的数据提交到远程服务器,必须满足两个条件
+    1.告诉表单需要提交到哪个服务器
+    可以通过form标签的action属性来告诉表单,需要提交到那个服务器
+    2.告诉表单,表单中的哪些数据需要提交
+    -->
+        <input type="submit"><br>
+
+        <!--
+    隐藏域
+    作用: 用于悄悄咪咪的收集用户的一些数据, 隐藏域是不会出现在界面中的
+    -->
+        <input type="hidden" name="cc" value="it666">
+    </form>
+    <form>
+        <!--
+        可以自动校验输入的内容是否符合邮箱的格式
+        -->
+        邮箱:<input type="email"><br>
+        <!--
+        可以自动校验输入的内容是否是URL地址
+        -->
+        域名:<input type="url"><br>
+        <!--
+        输入框中只能输入数字
+        -->
+        电话:<input type="number"><br>
+        <!--
+        可以通过日历来选择时间
+        -->
+        时间:<input type="date"><br>
+
+        <!--
+        可以通过取色板来选择颜色
+        -->
+        颜色: <input type="color"><br>
+
+        <input type="submit">
+    </form>
+</body>
+
+</html>

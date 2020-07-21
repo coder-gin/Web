@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .music {
+            width: 400px;
+            margin: 100px auto;
+            box-shadow: 0 0 5px #000;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .music>h3 {
+            text-align: center;
+            height: 40px;
+            line-height: 40px;
+        }
+
+        .music>ul {
+            list-style: none;
+        }
+
+        .music>ul>li {
+            width: 360px;
+            height: 30px;
+            line-height: 30px;
+            border-bottom: 1px solid #ccc;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        .music div {
+            width: 360px;
+            text-align: center;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="music">
+        <h3>歌曲排行榜</h3>
+        <ul>
+            <li><input type="checkbox" class="song">醒着做梦</li>
+            <li><input type="checkbox" class="song">男人不应该让女人流泪</li>
+            <li><input type="checkbox" class="song">女人不应该让男人太累</li>
+            <li><input type="checkbox" class="song">狂浪</li>
+            <li><input type="checkbox" class="song">生僻字</li>
+            <li><input type="checkbox" class="song">沙漠骆驼</li>
+            <li><input type="checkbox" class="song">最美的期待</li>
+            <li><input type="checkbox" class="song">光年之外</li>
+        </ul>
+        <div>
+            <input type="checkbox" class="btn"><button id="all_select">全选</button>
+            <input type="checkbox" class="btn"><button id="cancel_select">取消全选</button>
+            <input type="checkbox" class="btn"><button id="reverse_select">反选</button>
+        </div>
+    </div>
+    <script>
+        class Selecte {
+            constructor() {
+                this.songs = document.querySelectorAll('.song');
+                this.btns = document.querySelectorAll('.btn');
+                this.allSelect = document.querySelector('#all_select');
+                this.cancelSelect = document.querySelector('#cancel_select');
+                this.reverseSelect = document.querySelector('#reverse_select');
+            }
+            addClickAll() {
+                this.allSelect.addEventListener(
+                    'click',
+                    () => {
+                        for (const song of this.songs) {
+                            song.checked = true;
+                        }
+                    },
+                    false
+                );
+            }
+            addClickCancel() {
+                this.cancelSelect.addEventListener(
+                    'click',
+                    () => {
+                        for (const song of this.songs) {
+                            song.checked = false;
+                        }
+                    },
+                    false
+                );
+            }
+            addReverseSele() {
+                this.reverseSelect.addEventListener(
+                    'click',
+                    () => {
+                        for (const song of this.songs) {
+                            song.checked = !song.checked;
+                        }
+                    },
+                    false
+                );
+            }
+        }
+        let s = new Selecte();
+        s.addClickAll();
+        s.addClickCancel();
+        s.addReverseSele();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // a = 100;
+        // function demo(e) {
+        //     function e() { }
+        //     arguments[0] = 2;
+        //     console.log(e); // 2
+        //     if (a) {
+        //         var b = 123;
+        //         function c() {
+        //             // 猪都能做出来
+        //         }
+        //     }
+        //     var c;
+        //     a = 10;
+        //     var a;
+        //     console.log(b); // undefined
+        //     f = 123;
+        //     console.log(c); // undefined
+        //     console.log(a); // 10
+        // }
+        // var a;
+        // demo(1);
+        // console.log(a);// 100
+        // console.log(f); // 123
+
+
+
+
+
+
+        // 写一个方法，求一个字符串的字节长度。（提示：字符串有一个方法charCodeAt();一个中文占两个字节，一个英文占一个字节。
+        // 定义和用法
+        // charCodeAt()方法可我返回指定位置的字符的Unicode编码。这个返回值是0-65535之间的整数。
+        // （当返回值是<=255时，为英文，返回值>255时为中文）
+
+
+        // function retBetysLen(target) {
+        //     var chars = 0;
+        //     for (var i = 0; i < target.length; i++) {
+        //         if (target.charCodeAt(i) > 255) {
+        //             chars += 2;
+        //         } else {
+        //             chars++;
+        //         }
+        //     }
+        //     console.log(chars);
+        // }
+        // retBetysLen(prompt('input'));
+
+        // 简化后
+
+        function retBetysLen(target) {
+            // var count = target.length;
+            var count,
+                len;
+            count = len = target.length;
+            for (var i = 0; i < len; i++) {
+                if (target.charCodeAt(i) > 255) {
+                    count++;
+                }
+            }
+            console.log(count);
+        }
+        retBetysLen(prompt('input'));
+    </script>
+</body>
+
+</html>

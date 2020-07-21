@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 670px;
+            height: 350px;
+            border: 1px solid #000;
+            box-sizing: border-box;
+            margin: 100px auto;
+        }
+
+        .nav {
+            width: 100%;
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+        }
+
+        .nav>li {
+            list-style: none;
+            width: 100%;
+            height: 100%;
+            background-color: palegreen;
+            line-height: 50px;
+            border-right: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .nav>li:last-child {
+            border-right: none;
+        }
+
+        .content>li {
+            list-style: none;
+            width: 100%;
+            height: 300px;
+            display: none;
+        }
+
+        .nav .current {
+            background-color: gold;
+        }
+
+        .content>.show {
+            display: block;
+        }
+    </style>
+    <script src="./../jquery-1.12.4.js"></script>
+</head>
+
+<body>
+    <div class="box">
+        <ul class="nav">
+            <li class="current">HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>jQuery</li>
+            <li>Vue</li>
+        </ul>
+        <ul class="content">
+            <li class="show"><img src="./images/ad1.jpg" alt=""></li>
+            <li><img src="./images/ad2.jpg" alt=""></li>
+            <li><img src="./images/ad3.jpg" alt=""></li>
+            <li><img src="./images/ad4.jpg" alt=""></li>
+            <li><img src="./images/ad5.jpg" alt=""></li>
+        </ul>
+        </li>
+    </div>
+    <script>
+        /* $('.nav>li').hover(function () {
+            $(this).addClass('current');
+            var index = $(this).index();
+            $('.content>li').eq(index).addClass('show');
+        }, function () {
+            $(this).removeClass('current');
+            var index = $(this).index();
+            $('.content>li').eq(index).removeClass('show');
+        }) */
+
+
+
+        $('.nav>li').mouseenter(function () {
+            $(this).addClass('current');
+            $(this).siblings().removeClass('current');
+            var index = $(this).index();
+            $('.content>li').eq(index).addClass('show');
+            $('.content>li').eq(index).siblings().removeClass('show');
+        })
+    </script>
+</body>
+
+</html>

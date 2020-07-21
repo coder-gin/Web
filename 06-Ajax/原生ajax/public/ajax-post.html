@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原生ajax发送post请求</title>
+</head>
+
+<body>
+    <h1>原生ajax发送post请求</h1>
+    <button id="btn">点击我</button>
+    <script>
+        let btn = document.getElementById('btn')
+        btn.onclick = function () {
+            // 1.实例化一个XMLHttpRequest对象
+            let xhr = new XMLHttpRequest();
+            // 2.给该对象绑定一个事件监听，名称为onreadystatechange
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    console.log(xhr.response)
+                }
+            }
+            xhr.open('post', 'http://localhost:3000/post')
+            xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+            xhr.send('name=kobe&age=18');
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        // Grand.prototype.lastName = 'Gu';
+
+        // function Grand() {}
+        // var grand = new Grand();
+        // Father.prototype = grand;
+
+        // function Father() {
+        //     this.name = 'hehe';
+        // }
+        // var father = new Father();
+        // Son.prototype = father;
+
+        // function Son() {}
+        // var son = new Son();
+
+        // // 过多的继承了一些没用的属性
+
+
+
+        // function Person(name, age, sex) {
+        //     this.name = name;
+        //     this.age = age;
+        //     this.sex = sex;
+        // }
+
+        // function Student(name, age, sex, tel, grade) {
+        //     Person.call(this, name, age, sex);
+        //     this.tel = tel;
+        //     this.grad = grade;
+        // }
+        // var student = new Student('Gin', 18, 'male', 132, 100);
+
+
+        // 共享模式
+        // Father.prototype.lastName = 'Gu';
+
+        // function Father() {
+
+        // }
+
+        // function Son() {
+
+        // }
+
+        // function inherit(Target, Origin) {
+        //     Target.prototype = Origin.prototype;
+        // }
+        // inherit(Son, Father);
+        // Son.prototype.sex = 'male';
+        // var son = new Son();
+        // var father = new Father();
+        // // 缺点：当给Son添加sex属性时，Father上也有该属性
+
+
+        // 关于更改Son.prototype后Father.prototype也更改还没完全整明白，暂且先放着
+
+
+        // 圣杯模式
+        // function inherit(Target, Origin) {
+        //     function F() { };
+        //     F.prototype = Origin.prototype;
+        //     Target.prototype = new F();
+        //     Target.prototype.constructor = Target;
+        //     Target.prototype.uber = Origin.prototype; // 究竟继承自谁
+        // }
+        // // YUI3
+        // var inherit = (function () {
+        //     var F = function () { }
+        //     return function (Target, Origin) {
+        //         F.prototype = Origin.prototype;
+        //         Target.prototype = new F();
+        //         Target.prototype.constructor = Target;
+        //         Target.prototype.uber = Origin.prototype;
+        //     }
+        // }())
+
+
+
+
+        // Father.prototype.lastName = 'Gu';
+
+        // function Father() {}
+
+        // function Son() {}
+        // inherit(Son, Father);
+        // Son.prototype.sex = 'female';
+        // var son = new Son();
+        // var father = new Father();
+
+        // son.__proto__-- > new F().__proto__-- > Father.prototype
+
+
+
+
+
+
+
+
+
+        // // 一个对象，像jQuery一样连续调用
+        // var person = {
+        //     smoke: function() {
+        //         console.log('smoking......xuan cool!!!!');
+        //         return this;
+        //     },
+        //     drink: function() {
+        //         console.log('drinking....very coll!!!!');
+        //         return this;
+        //     },
+        //     perm: function() {
+        //         console.log('perming....cool!!!');
+        //         return this;
+        //     }
+        // }
+        // person.smoke().drink().perm().drink();
+
+
+
+
+
+
+
+
+
+
+        // var gu = {
+        //     wife1: {
+        //         name: 'xiaowang'
+        //     },
+        //     wife2: {
+        //         name: 'xiaozhang'
+        //     },
+        //     wife3: {
+        //         name: 'xiaoli'
+        //     },
+        //     wife4: {
+        //         name: 'xiaozhao'
+        //     },
+        //     sayWife: function(num) {
+        //         return this['wife' + num];
+        //     }
+        // }
+
+
+
+
+
+
+
+
+
+        // var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        // for (var i = 0; i < arr.length; i++) {
+        //     console.log(arr[i]);
+        // }
+
+
+        // var obj = {
+        //     name: 'gu',
+        //     age: 18,
+        //     sex: 'male',
+        //     height: 180,
+        //     weight: 75
+        // }
+
+        // for (var prop in obj) {
+        //     console.log(prop + '    ' + typeof(prop));
+        //     console.log(obj[prop]);
+        // }
+
+
+
+
+        // var obj = {
+        //     name: 'yu',
+        //     age: 18,
+        //     sex: 'male',
+        //     height: 180,
+        //     weight: 75,
+        //     __proto__: {
+        //         lastName: 'Gu'
+        //     }
+        // }
+        // for (var prop in obj) {
+        //     // console.log(prop + '    ' + typeof prop);
+        //     console.log(obj[prop]);
+        // }
+
+
+
+        // for (var prop in obj) {
+        //     if (obj.hasOwnProperty(prop)) {
+        //         console.log(obj[prop]);
+        //     }
+        // }
+
+
+
+
+
+
+
+        // function Person() {
+
+        // }
+
+        // var person = new Person();
+
+        // A instanceof B
+
+        // 定义一个变量，不确定是数组还是对象，判断
+        var demo = [];
+        var demo1 = {};
+
+
+        // call toString
+        // Object.prototype.toString.call([]);
+
+        Object.prototype.toString = function() {
+            // 识别 this
+            // 返回相应的结果
+        }
+
+        // obj.toString();
+    </script>
+</body>
+
+</html>

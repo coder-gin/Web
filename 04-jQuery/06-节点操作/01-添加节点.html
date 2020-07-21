@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./../jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            $('button').click(function () {
+                var $li = $('<li>我是第1个li</li>')
+                // $('ul').append($li);
+                // $('ul').prepend($li);
+
+
+                // $li.appendTo($('ul'));
+                // $li.prependTo($('ul'))
+
+                // $('ul').after($li);
+                // $('ul').before($li);
+
+                // $li.insertAfter($('ul'))
+                $li.insertBefore($('ul'))
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <button>添加节点</button>
+    <ul>
+        <li>我是第1个li</li>
+        <li>我是第2个li</li>
+        <li>我是第3个li</li>
+    </ul>
+    <div>我是div</div>
+</body>
+
+</html>

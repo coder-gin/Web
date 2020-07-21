@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">点击我</button>
+    <script>
+        let btn = document.getElementById('btn')
+        let lastXhr = null;
+        btn.onclick = function () {
+            if (lastXhr) {
+                lastXhr.abort(); // abort()取消本次请求（拦截回来的响应）。
+            }
+            lastXhr = getCode();
+        }
+
+        function getCode() {
+            let xhr = new XMLHttpRequest()
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    console.log(xhr.response)
+                }
+            }
+            xhr.open('get', 'http://localhost:3000/code');
+            xhr.send();
+            return xhr;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.js"></script>
+</head>
+
+<body>
+    <button id="btn">点击我jsonp跨域获取数据</button>
+    <script>
+        /* let btn = document.getElementById('btn')
+        btn.onclick = function () {
+            let scriptNode = document.createElement('script')
+            window.getData = function (data) {
+                console.log(data)
+            }
+            scriptNode.src = 'http://localhost:3000/get?callback=getData';
+            document.body.appendChild(scriptNode);
+        } */
+
+        // jquery
+        $('#btn').click(function () {
+            /* $.ajax('http://localhost:3000/get', {
+                method: 'get',
+                dataType: 'jsonp',
+                data: {
+                    m: 1,
+                    n: 2
+                },
+                success: function (data) {
+                    console.log(data)
+                },
+                error: function (err) {
+                    console.log(err)
+                }
+            }) */
+
+            $.getJSON('http://localhost:3000/get?callback=?', {
+                name: 'cherry',
+                age: 18
+            }, function (data) {
+                console.log(data)
+            })
+        })
+    </script>
+</body>
+
+</html>

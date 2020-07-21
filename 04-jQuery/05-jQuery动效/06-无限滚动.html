@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 600px;
+            height: 161px;
+            border: 1px solid red;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+
+        div>ul {
+            list-style: none;
+            width: 1800px;
+            height: 100%;
+            background-color: #000;
+        }
+
+        div>ul>li {
+            float: left;
+            /* opacity: 1; */
+        }
+    </style>
+    <script src="./../jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            // 定义变量保存偏移位
+            var offset = 0;
+            // 让图片滚动起来
+            var timer;
+            function autoPlay() {
+                timer = setInterval(function () {
+                    offset -= 10;
+                    if (offset <= -1200) {
+                        offset = 0;
+                    }
+                    $('ul').css('marginLeft', offset);
+                }, 100)
+            }
+            autoPlay();
+            $('li').hover(function () {
+                clearInterval(timer);
+                // $(this).siblings().css('opacity', 0.5)
+                $(this).siblings().fadeTo(10, 0.5);
+            }, function () {
+                autoPlay();
+                // $(this).siblings().css('opacity', 1)
+                $(this).siblings().fadeTo(10, 1);
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li><img src="./images/a.jpg" alt=""></li>
+            <li><img src="./images/b.jpg" alt=""></li>
+            <li><img src="./images/c.jpg" alt=""></li>
+            <li><img src="./images/d.jpg" alt=""></li>
+            <li><img src="./images/a.jpg" alt=""></li>
+            <li><img src="./images/b.jpg" alt=""></li>
+        </ul>
+    </div>
+</body>
+
+</html>

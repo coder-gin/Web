@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // function Student(name, height) {
+    //     this.name = name;
+    //     this.height = height;
+    //     this.say = function () {
+    //         console.log(this.say);
+    //     }
+    // }
+    // var student = new Student('zhangsan', 180);
+
+
+
+
+
+    // function Person(name, age) {
+    //     this.name = name;
+    //     this.age = age;
+    //     return {};
+    // }
+    // var person = new Person('xiaozhang', 18);
+    // var person1 = new Person('xiaoli', 17);
+
+
+
+
+    // function Person(name, age) {
+    //     this.name = name;
+    //     this.age = age;
+    //     return 123;
+    // }
+    // var person = new Person('xiaozhang', 18);
+    // var person1 = new Person('xiaoli', 17);
+
+
+
+    // var arr = [1, 2, 3, 4, 5];
+    // arr.length = 2;
+    // console.log(arr); // [1, 2]
+    // var str = 'abcd';
+    // str.length = 2; // 隐式的加上 new string('abcd').length = 2; 然后delete
+    // // 字符串自带length属性
+    // console.log(str); // 'abcd'
+    // console.log(str.length); // 4
+
+
+
+    // var str = 'abc';
+    // str += 1; // 'abc1'
+    // var test = typeof str; // test == 'string';
+    // if (test.length == 6) {
+    //     test.sign = 'typeof的返回结果可能为string'; // /这是原始值,原始值要赋属性值需要调用包装类，赋了跟没赋值是一样的，new String(test).sign=’xxx’;
+    // }
+    // console.log(test.sign); // undefined
+
+
+
+
+
+    // function Person(name, age, sex) {
+    //     var a = 0;
+    //     this.name = name;
+    //     this.age = age;
+    //     this.sex = sex;
+    //     function sss() {
+    //         a++;
+    //         console.log(a);
+    //     }
+    //     this.say = sss;
+    // }
+    // var person = new Person();
+    // person.say(); // 1
+    // person.say(); // 2
+    // var person1 = new Person();
+    // person1.say(); // 1
+
+
+
+
+    // var x = 1, y = z = 0;
+    // function add(n) {
+    //     return n = n + 1;
+    // }
+    // y = add(x);
+    // function add(n) {
+    //     return n = n + 3;
+    // }
+    // z = add(x);
+    // console.log(x); // 1
+    // console.log(y); // 4
+    // console.log(z); // 4
+    // // 同一个函数，后面会覆盖前面的 function add 会提升到前面
+
+
+
+    // function b(x, y, a) {
+    //     // arguments[2] = 10;
+    //     // alert(a); // 10
+    //     a = 10;
+    //     alert(arguments[2]); // 10
+    // }
+    // b(1, 2, 3);
+
+
+    // var obj = Object.create(原型);
+    var obj = Object.create(null);
+    var o = {};
+    var obj1 = Object.create(o);
+  </script>
+</body>
+
+</html>

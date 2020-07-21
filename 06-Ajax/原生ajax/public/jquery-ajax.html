@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jquery.js"></script>
+</head>
+
+<body>
+    <button id="btn1">点击我发送get请求</button>
+    <button id="btn2">点击我发送post请求</button>
+    <script>
+        $('#btn1').click(function () {
+            // $.ajax('http://localhost:3000/ajax-get', {
+            //     method: 'get',
+            //     data: {
+            //         name: 'sunny',
+            //         age: 18
+            //     },
+            //     success: function (result) {
+            //         console.log(result)
+            //     },
+            //     error: function (err) {
+            //         console.log(err)
+            //     }
+            // })
+
+            $.get('http://localhost:3000/ajax-get', {
+                name: 'sunny',
+                age: 18
+            }, data => console.log(data))
+        })
+        $('#btn2').click(function () {
+            // $.ajax('http://localhost:3000/ajax-post', {
+            //     method: 'post',
+            //     data: {
+            //         name: 'Tom',
+            //         age: 20
+            //     },
+            //     success: function (result) {
+            //         console.log(result)
+            //     },
+            //     error: function (err) {
+            //         console.log(err)
+            //     }
+            // })
+
+            $.post('http://localhost:3000/ajax-post', {
+                name: 'Tom',
+                age: 20
+            }, data => console.log(data))
+        })
+    </script>
+</body>
+
+</html>

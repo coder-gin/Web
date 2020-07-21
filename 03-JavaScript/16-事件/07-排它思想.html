@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            width: 400px;
+            border: 1px solid #000;
+            margin: 100px auto;
+        }
+
+        .current {
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li class="current">我是第1个li</li>
+        <li>我是第2个li</li>
+        <li>我是第3个li</li>
+        <li>我是第4个li</li>
+        <li>我是第5个li</li>
+    </ul>
+    <script>
+        let lis = document.querySelectorAll('li'),
+            len = lis.length,
+            preIndx = 0;
+        for (let i = 0; i < len; i++) {
+            lis[i].onclick = function () {
+                let preLi = lis[preIndx];
+                preLi.className = '';
+                this.className = 'current';
+                preIndx = i;
+            }
+        }
+    </script>
+</body>
+
+</html>

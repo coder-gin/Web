@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="#">
+        <fieldset>
+            <legend>注册界面</legend>
+            <div>
+                <label for="userName">
+                    账号：<input type="text" name="userName" id="userName">
+                </label>
+            </div>
+            <div>
+                <label for="userPsw">
+                    密码：<input type="password" name="userPsw" id="userPsw">
+                </label>
+            </div>
+            <div>
+                <label for="sex">
+                    性别：
+                    <input type="radio" name="sex" id="sex" value="male">男
+                    <input type="radio" name="sex" id="sex" value="female">女
+                    <input type="radio" name="sex" id="sex" value="secrecy" checked="checked">保密
+                </label>
+            </div>
+            <div>
+                <label for="hobby">
+                    爱好：
+                    <input type="checkbox" name="hobby" id="hobby" value="bascketball" checked="checked">篮球
+                    <input type="checkbox" name="hobby" id="hobby" value="football">足球
+                    <input type="checkbox" name="hobby" id="hobby" value="badminton">羽毛球
+                </label>
+            </div>
+            <div>
+                <label for="personal">
+                    简介：
+                    <textarea name="personal" id="personal" cols="30" rows="10"></textarea>
+                </label>
+            </div>
+            <div>
+                <label for="birthday">
+                    生日：
+                    <input type="date" name="birthday" id="birthday">
+                </label>
+            </div>
+            <div>
+                <label for="email">
+                    邮箱：
+                    <input type="email" name="email" id="email">
+                </label>
+            </div>
+            <div>
+                <label for="tel">
+                    电话：
+                    <input type="number" name="telephone" id="tel">
+                </label>
+            </div>
+            <div>
+                <input type="submit" name="注册" value="注册">&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="reset" value="清空">
+            </div>
+        </fieldset>
+        <!-- 
+            userName=33333
+            &userPsw=123456
+            &sex=male
+            &hobby=bascketball&hobby=football&hobby=badminton
+            &personal=just+do+it
+            &birthday=2018-10-10&
+            email=215129113%40qq.com
+            &telephone=13277080310
+            &%E6%B3%A8%E5%86%8C=%E6%B3%A8%E5%86%8C#
+         -->
+    </form>
+</body>
+
+</html>

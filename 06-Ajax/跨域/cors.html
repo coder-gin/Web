@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.js"></script>
+</head>
+
+<body>
+    <button id="btn1">点击我cors跨域获取get数据</button>
+    <button id="btn2">点击我cors跨域获取post数据</button>
+    <script>
+        $('#btn1').click(function () {
+            $.get('http://localhost:3000/cors-get', {
+                a: 1,
+                b: 11
+            }, data => console.log(data))
+        })
+        $('#btn2').click(function () {
+            $.post('http://localhost:3000/cors-post', {
+                c: 2,
+                d: 22
+            }, data => console.log(data))
+        })
+    </script>
+</body>
+
+</html>

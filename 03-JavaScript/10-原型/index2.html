@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // function test(c) {
+        //     // var this = Object.create(test.prototype);
+        //     // {
+        //     //     __proto__: test.prototype
+        //     // }
+        //     var a = 123;
+        //     function b() { }
+        // }
+        // // AO {
+        // //     arguements: [1],
+        // //     c: 1,
+        // //     a: undefined,
+        // //     b: function () {}
+        // // }
+        // test(1);
+        // new test();
+
+
+
+        // var name = '222';
+        // var a = {
+        //     name: '111',
+        //     say: function () {
+        //         console.log(this.name);
+        //     }
+        // }
+        // var fun = a.say;
+        // fun(); // 222
+        // a.say(); // 111
+        // var b = {
+        //     name: '333',
+        //     say: function (fun) {
+        //         fun();
+        //     }
+        // }
+        // b.say(a.say); // 222
+        // b.say = a.say;
+        // b.say(); // 333
+
+
+
+
+        // function test() {
+        //     console.log(arguments.callee);
+        // }
+        // test();
+
+
+        // // 利用arguments.callee用立即执行函数实现n的阶乘
+        // var num = (function(n) {
+        //     if (n == 1 || n == 0) {
+        //         return 1;
+        //     }
+        //     return n * arguments.callee(n - 1);
+        // }(5))
+
+
+
+
+
+        // function test() {
+        //     console.log(arguments.callee); // function test() {...}
+
+        //     function demo() {
+        //         console.log(arguments.callee); // function demo() {...}
+        //     }
+        //     demo();
+        // }
+        // test();
+
+
+        // function test() {
+        //     demo();
+        // }
+
+        // function demo() {
+        //     console.log(demo.caller);
+        // }
+        // test();
+
+
+        // var foo = '123';
+
+        // function print() {
+        //     var foo = '456';
+        //     this.foo = '789';
+        //     console.log(foo); // 456
+        // }
+        // print();
+
+
+
+        // var foo = '123';
+
+        // function print() {
+        //     // var this = Object.create(print.prototype)
+        //     this.foo = '234';
+        //     console.log(foo);
+        // }
+        // // print();
+        // new print();
+
+
+
+
+        // var obj = {
+        //     name: 'qianyu',
+        //     lastName: 'xia'
+        // }
+        // var obj1 = Object.create(obj);
+
+
+
+
+        // var a = 5;
+
+        // function test() {
+        //     // var this = {
+        //     //     __proto__: test.prototype
+        //     // }
+        //     a = 0;
+        //     console.log(a);
+        //     console.log(this.a);
+        //     var a;
+        //     console.log(a);
+        // }
+        // // test(); // 0    5   0
+        // new test(); // 0    0   0  正确答案： 0  undefined 0
+        // // this上没有a属性，对象没有的属性访问时返回undefined
+
+
+
+
+        // function print() {
+        //     console.log(foo); // undefined
+        //     var foo = 2;
+        //     console.log(foo); // 2
+        //     console.log(hello); // 报错,hello is not  defined
+        // }
+        // print();
+
+
+
+
+        // function print() {
+        //     var test;
+        //     test();
+
+        //     function test() {
+        //         console.log(1);
+        //     }
+        // }
+        // print(); // 1
+
+
+
+
+
+        // function print() {
+        //     var x = 1;
+        //     if (x == '1') {
+        //         console.log("One!");
+        //     }
+        //     if (x === '1') {
+        //         console.log('Two!');
+        //     }
+        // }
+        // print(); // One!
+
+
+
+
+
+        // function print() {
+        //     var marty = {
+        //         name: 'marty',
+        //         printName: function() {
+        //             console.log(this.name);
+        //         }
+        //     }
+        //     var test1 = {
+        //         name: 'test1'
+        //     }
+        //     var test2 = {
+        //         name: 'test2'
+        //     }
+        //     var test3 = {
+        //         name: 'test3'
+        //     }
+        //     test3.printName = marty.printName;
+        //     var printName2 = marty.printName.bind({ name: 123 });
+        //     marty.printName.call(test1);
+        //     marty.printName.apply(test2);
+        //     marty.printName();
+        //     printName2();
+        //     test3.printName();
+        // }
+        // print();
+
+
+
+
+
+
+
+        // var bar = {
+        //     a: '002'
+        // }
+
+        // function print() {
+        //     bar.a = 'a';
+        //     Object.prototype.b = 'b';
+        //     return function inner() {
+        //         console.log(bar.a); // a
+        //         console.log(bar.b); // undefined
+        //     }
+        // }
+        // print()();
+
+
+
+
+
+        var obj = {
+            name: 'abc',
+            age: 123,
+            sex: 'female',
+            card: ['visa', 'unionpay', 'master' ],
+            wife: {
+                name: 'bcd',
+                son: {
+                    name: 'aaa'
+                }
+            }
+        }
+        var obj1 = {}
+
+        function clone(origin, target) {
+            var target = target || {};
+            for (var prop in origin) {
+                if (origin[prop] instanceof Array || origin[prop] instanceof Object) {
+                    for (var key in origin[prop]) {
+                        target[prop] = origin[prop];
+                    }
+                } else {
+                    target[prop] = origin[prop];
+                }
+            }
+            return target;
+        }
+        clone(obj, obj1);
+
+
+        // function deepClone(origin, target) {
+
+        // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

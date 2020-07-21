@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // var a = 123;
+        // console.log(a); // 123
+
+
+
+
+        // console.log(a); // undefined
+        // var a = 123;
+
+
+
+
+        // 例只写 console.log(a);就会报错
+        // console.log(a); // index.html:18 Uncaught ReferenceError: a is not defined at index.html:18
+
+
+        // console.log(a);
+        // function a() { }
+        // var a = 123;
+
+
+
+
+        // console.log(a);
+        // // function a(a) {
+        // // var a = 234;
+        // // var a = function () { };
+        // // a();
+        // // }
+        // function a(a) {
+        //     var a = 234;
+        //     var a = function () { };
+        //     a();
+        // }
+        // var a = 123;
+
+        // AO {
+        //     a:undefined,--> 234 --> function () {}
+        // }
+
+        // GO {
+        //     a: undefined  --> function a(a) {}  --> 123
+        // }
+
+
+
+        // function fn(a) {
+        //     console.log(a); // function a() { }
+        //     var a = 123;
+        //     console.log(a); // 123
+        //     function a() { }
+        //     console.log(a); // 123
+        //     var b = function () { }
+        //     console.log(b); // function () { }
+        //     function d() { }
+        // }
+        // fn(1);
+
+
+
+
+        // function test(a, b) {
+        //     console.log(a); // 1
+        //     c = 0;
+        //     var c;
+        //     a = 3;
+        //     b = 2;
+        //     console.log(b); // 2
+        //     function b() { }
+        //     function d() { }
+        //     console.log(b); // 2
+        // }
+        // test(1);
+
+
+
+        // function test(a, b) {
+        //     console.log(a); // function a() { }
+        //     console.log(b); // undefined
+        //     var b = 234;
+        //     console.log(b); // 234
+        //     a = 123;
+        //     console.log(a); // 123
+        //     function a() { }
+        //     var a;
+        //     b = 234;
+        //     var b = function () { }
+        //     console.log(a); // 123
+        //     console.log(b); // function () {}
+        // }
+        // test(1);
+
+
+
+
+        // function test() {
+        //     var a = b = 123;
+        //     console.log(window.b); // 123
+        //     console.log(a); // 123
+        // }
+        // test();
+        // console.log(b); // 123
+        // console.log(a); // 报错
+
+
+
+        // console.log(test); // function test (test) {...}
+        // function test(test) {
+        //     console.log(test); // function test() { }
+        //     var test = 234;
+        //     console.log(test); // 234
+        //     function test() { }
+        // }
+        // test(1);
+        // var test = 123;
+        // console.log(test); // 123
+
+
+
+
+        // global = 100;
+        // function fn() {
+        //     console.log(global); // undefined
+        //     global = 200;
+        //     console.log(global); // 200
+        //     var global = 300;
+        //     console.log(global); // 300
+        // }
+        // fn();
+        // var global;
+        // console.log(global); // 100
+
+
+
+        // function test() {
+        //     console.log(b); // undefined
+        //     if (a) {
+        //         // 此时a的值为undefined，if (a)中() 是一个表达式，会优先计算，将undefined转换为布尔值，结果为false,不会执行b,所以b的结果为undefined
+        //         var b = 100;
+        //     }
+        //     console.log(b); // undefined
+        //     c = 234;
+        //     console.log(c); // 234
+        // }
+        // var a;
+        // test();
+        // a = 10;
+        // console.log(c); // 234
+
+        // GO {
+        //     a: undefined --> 10
+        // }
+
+
+
+
+        // function bar() {
+        //     return foo;
+        //     foo = 10;
+        //     function foo() { }
+        //     var foo = 11;
+        // }
+        // console.log(bar()); // function foo() { }
+
+
+        // console.log(bar()); // 11
+        // function bar() {
+        //     foo = 10;
+        //     function foo() { }
+        //     var foo = 11;
+        //     return foo;
+        // }
+
+
+
+
+        // a = 100;
+        // function demo(e) {
+        //     function e() { }
+        //     arguments[0] = 2;
+        //     console.log(e); // 2
+        //     if (a) {
+        //         var b = 123;
+        //         function c() {
+        //             // 猪都能做出来
+        //         }
+        //     }
+        //     var c;
+        //     a = 10;
+        //     var a;
+        //     console.log(b); // undefined
+        //     f = 123;
+        //     console.log(c); // undefined
+        //     console.log(a); // 10
+        // }
+        // var a;
+        // demo(1);
+        // console.log(a); // 100
+        // console.log(f); // 123
+
+
+
+        // var str = false + 1;
+        // console.log(str); // 1
+        // var demo = false == 1;
+        // console.log(demo); // false. 注意：false == 1是判断false与1是否相等，不存在隐式类型转换
+        // console.log(typeof (a) && -true + (+undefined) + '');
+        // if (typeof (a) && -true + (+undefined) + '') { // 'undefined' && -1 + NaN + '',结果为true
+        //     console.log('基础扎实');
+        // }
+        // if (11 + '11' * 2 == 33) {
+        //     console.log('基础扎实');
+        // }
+        // console.log(!!' ' + !!'' - !!false || console.log(('你觉得你能打印，你就是猪')));
+        // // true + false - false || console.log(('你觉得你能打印，你就是猪'));
+        // // 1 || console.log(('你觉得你能打印，你就是猪'))   -->  1
+
+
+
+
+        // var x = 1;
+        // if (function f() { }) {
+        //     x += typeof f;
+        // }
+        // console.log(x); // 1undefined
+
+
+
+
+        // console.log((window.foo || (window.foo = 'bar'))); 
+        // 'bar', ()优先级最高，优先计算 window.foo = 'bar'，而第一项window.foo的值为undefined，转换为布尔值为false,故返回'bar'
+    </script>
+</body>
+
+</html>
