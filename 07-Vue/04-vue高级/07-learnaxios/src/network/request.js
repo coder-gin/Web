@@ -6,12 +6,10 @@ export function request (config) {
     timeout: 5000
   })
 
-  // axios的拦截
   axios.interceptors.request.use(config => {
-    console.log('这是request拦截成功')
-  }, err => {
-    console.log('这是request拦截失败')
-  })
+    console.log(config)
+    return config
+  }, err => console.log(err))
 
   return instance(config)
 }
