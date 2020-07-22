@@ -826,6 +826,48 @@ Vue 实例控制的区域相当于一个大的组件，在大组件中我们可�
 </script>
 ```
 
+props的值有两种方式：
+
+- 字符串数组，数组中的字符串就是传递时的名称。
+
+- 对象，对象可以设置传递时的类型，也可以设置默认值等。当需要对props进行类型等验证时，就需要对象写法了。
+
+  ```js
+  Vue.component('Home',{
+      props:{
+          propA:Number,
+          propB:[String,Number],
+          // 必填的字符串
+          poprC:{
+              type:String,
+              required:true
+          },
+          // 带有默认值的数字
+          propD:{
+              type:Number,
+              default:100
+          },
+          // 带有默认值的对象
+          propE:{
+              type:Object,
+              // 对象或数组默认值必须从一个工厂函数获取
+              default:function() {
+                  return {
+                      message: 'hello vue.js'
+                  }
+              }
+          },
+          // 自定义验证函数
+          propF:{
+              validator:function(value) {
+                  // 这个值必须匹配下列字符串中的一个
+                  return ['success','warning','danger'].indexOf(value) !== -1
+              }
+          }
+      }
+  })
+  ```
+
 ## 父子组件方法传递
 
 在 Vue 中子组件是不能访问父组件的方法的，如果子组件想要访问父组件的方法，必须通过父组件传递
