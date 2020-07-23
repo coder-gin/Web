@@ -70,3 +70,31 @@ Vue 其实是基于 MVVM 设计模式的
   });
 </script>
 ```
+
+# 常用指令
+
+指令就是 Vue 内部提供的一些自定义属性，这些属性中封装好了 Vue 内部实现的一些功能，只要使用这些指令就可以使用 Vue 中实现的这些功能
+
+Vue 数据绑定的特点：只要数据发生变化，界面就会跟着变化
+
+## v-once
+
+让界面不要跟着数据变化，只渲染一次
+
+```html
+<div id="app">
+  <h1 v-once>这是有v-once指令的信息：{{msg}}</h1>
+  <h1>这是没有v-once指令的信息：{{msg}}</h1>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  new Vue({
+    el: "#app",
+    data: {
+      msg: "hello vue.js",
+    },
+  });
+</script>
+```
+
+![](assets/2020-07-19-15-56-45.png)
