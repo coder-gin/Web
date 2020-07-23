@@ -109,7 +109,7 @@ Vue 数据绑定的特点：只要数据发生变化，界面就会跟着变化
 
 ## v-cloak
 
-Vue 数据绑定过程
+Vue 数据绑定过程：
 
 1. 会先将未绑定数据的界面展示给用户
 2. 然后再根据模型中的数据和控制的区域生成绑定数据之后的 HTML 代码
@@ -196,22 +196,27 @@ v-else 注意点：
 - v-else 不能单独出现
 - v-if 和 v-else 中间不能出现其它内容
 
-v-else-if 可以和 v-if 指令配合使用, 当 v-if 不满足条件时就依次执行后续 v-else-if, 哪个满足就显示哪个
+v-else-if 可以和 v-if 指令配合使用，当 v-if 不满足条件时就依次执行后续 v-else-if，哪个满足就显示哪个
+
+**v-for**注意点：
+
+1. v-for 为了提升性能，在更新已渲染过的元素列表时，会采用**就地复用**策略。也正是因为这个策略，在某些时刻会导致我们的数据混乱。例如: 在列表前面新增了内容
+2. 为了解决这个问题，我们可以在渲染列表的时候给每一个元素加上一个独一无二的 key。v-for 在更新已经渲染过的元素列表时，会先判断 key 是否相同，如果相同则复用，如果不同则重新创建
 
 ## v-show
 
-v-show 和 v-if 的能够一样都是条件渲染, 取值为 true 就显示, 取值为 false 就不显示
+v-show 和 v-if 的能够一样都是条件渲染，取值为 true 就显示，取值为 false 就不显示
 
 v-if 和 v-show 区别
 
 - v-if: 只要取值为 false 就不会创建元素
-- v-show: 哪怕取值为 false 也会创建元素, 只是如果取值是 false 会设置元素的 display 为 none
+- v-show: 哪怕取值为 false 也会创建元素，只是如果取值是 false 会设置元素的 display 为 none
 
 ## v-for
 
-相当于 JS 中的 for in 循环, 可以根据数据多次渲染元素
+相当于 JS 中的 for in 循环，可以根据数据多次渲染元素
 
-v-for 可以遍历 数组, 字符, 数字, 对象
+v-for 可以遍历 数组，字符，数字，对象
 
 ```html
 <div id="app">
@@ -826,46 +831,46 @@ Vue 实例控制的区域相当于一个大的组件，在大组件中我们可�
 </script>
 ```
 
-props的值有两种方式：
+props 的值有两种方式：
 
 - 字符串数组，数组中的字符串就是传递时的名称。
 
-- 对象，对象可以设置传递时的类型，也可以设置默认值等。当需要对props进行类型等验证时，就需要对象写法了。
+- 对象，对象可以设置传递时的类型，也可以设置默认值等。当需要对 props 进行类型等验证时，就需要对象写法了。
 
   ```js
-  Vue.component('Home',{
-      props:{
-          propA:Number,
-          propB:[String,Number],
-          // 必填的字符串
-          poprC:{
-              type:String,
-              required:true
-          },
-          // 带有默认值的数字
-          propD:{
-              type:Number,
-              default:100
-          },
-          // 带有默认值的对象
-          propE:{
-              type:Object,
-              // 对象或数组默认值必须从一个工厂函数获取
-              default:function() {
-                  return {
-                      message: 'hello vue.js'
-                  }
-              }
-          },
-          // 自定义验证函数
-          propF:{
-              validator:function(value) {
-                  // 这个值必须匹配下列字符串中的一个
-                  return ['success','warning','danger'].indexOf(value) !== -1
-              }
-          }
-      }
-  })
+  Vue.component("Home", {
+    props: {
+      propA: Number,
+      propB: [String, Number],
+      // 必填的字符串
+      poprC: {
+        type: String,
+        required: true,
+      },
+      // 带有默认值的数字
+      propD: {
+        type: Number,
+        default: 100,
+      },
+      // 带有默认值的对象
+      propE: {
+        type: Object,
+        // 对象或数组默认值必须从一个工厂函数获取
+        default: function () {
+          return {
+            message: "hello vue.js",
+          };
+        },
+      },
+      // 自定义验证函数
+      propF: {
+        validator: function (value) {
+          // 这个值必须匹配下列字符串中的一个
+          return ["success", "warning", "danger"].indexOf(value) !== -1;
+        },
+      },
+    },
+  });
   ```
 
 ## 父子组件方法传递
