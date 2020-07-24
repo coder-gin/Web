@@ -932,6 +932,74 @@ props 的值有两种方式：
 3. 在传递方法的时候不能使用**驼峰命名**, 只能用**短横线分隔命名**
    - `@parent-say="say"` -> `this.$emit("parent-say")`
 
+## 组件访问
+
+有时候我们需要父组件直接访问子组件，子组件直接访问父组件，或者是子组件访问跟组件。
+
+- 父组件访问子组件：使用`$children`或`$refs` reference(引用)
+- 子组件访问父组件：使用`$parent`
+
+```html
+<div id="app">
+  <con></con>
+  <con ref="demo"></con>
+  <con></con>
+  <button @click="btnClick">按钮</button>
+</div>
+<template id="son">
+  <div>我是子组件</div>
+</template>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  new Vue({
+    el: "#app",
+    data: {
+      name: "father,我是父组件的名字信息",
+    },
+    methods: {
+      btnClick() {
+        console.log(this.$children);
+        console.log(this.$children[1].age);
+        console.log(this.$refs);
+        console.log(this.$refs.demo.age);
+        console.log(this.$refs.demo == this.$children[1]);
+      },
+    },
+    components: {
+      con: {
+        template: "#son",
+        data() {
+          return {
+            age: "18,我是子组件的年龄信息",
+          };
+        },
+      },
+    },
+  });
+</script>
+```
+
+![](assets/2020-07-24-20-30-04.png)
+
+`this.$children`是一个数组类型，它包含所有子组件对象。
+
+`$children`的缺陷：通过`$children`访问子组件时，是一个数组类型，访问其中的子组件必须通过索引值。但是当子组件过多，我们需要拿到其中一个时，往往不能确定它的索引值，甚至还可能会发生变化。
+
+有时候，我们想明确获取其中一个特定的组件，这个时候就可以使用`$refs`
+
+`$refs`的使用：`$refs`和 ref 指令通常是一起使用的。首先，我们通过 ref 给某一个子组件绑定一个特定的 ID。其次，通过`this.$refs.ID`就可以访问到该组件了。
+
+如果我们想在子组件中直接访问父组件，可以通过`$parent`
+
+注意事项：
+
+- 尽管在 Vue 开发中，我们允许通过`$parent`来访问父组件，但是在真实开发中尽量不要这样做。
+- 子组件应该尽量避免直接访问父组件的数据，因为这样耦合度太高了。
+- 如果我们将子组件放在另外一个组件之内，很可能该父组件没有对应的属性，往往会引起问题。
+- 另外，更不好做的是通过`$parent`直接修改父组件的状态，那么父组件中的状态将变得飘忽不定，很不利于我的调试和维护。
+
+访问根组件`$root`
+
 # 插槽
 
 默认情况下使用子组件时在子组件中编写的元素是不会被渲染的，如果子组件中有部分内容是使用时才确定的，那么我们就可以使用插槽。插槽就是在子组件中放一个**坑**，以后由父组件来**填**
@@ -1037,8 +1105,7 @@ v-slot 指令是 Vue2.6 中用于替代 slot 属性的一个指令
 </script>
 ```
 
-在 2.6.0 中，我们为具名插槽和作用域插槽引入了一个新的统一的语法 (即 v-slot 指令)。
-它取代了 slot 和 slot-scope
+在 2.6.0 中，我们为具名插槽和作用域插槽引入了一个新的统一的语法 (即 v-slot 指令)。它取代了 slot 和 slot-scope
 
 也就是说我们除了可以通过 v-slot 指令告诉 Vue 内容要填充到哪一个具名插槽中，还可以通过 v-slot 指令告诉 Vue 如何接收作用域插槽暴露的数据`v-slot:插槽名称="作用域名称"`
 
