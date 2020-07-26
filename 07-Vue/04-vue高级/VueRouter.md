@@ -51,7 +51,7 @@ URL 的 hash 也就是锚点(#)，本质上是改变 window.location 的 href �
 
 我们可以通过直接赋值 location.hash 来改变 href，但是页面不发生刷新
 
-## HTML5 的 history 模式：pushState
+## HTML5 的 history 模式
 
 history 接口是 HTML5 新增的, 它有五种模式改变 URL 而不刷新页面
 
@@ -125,7 +125,7 @@ const routes = [
 ];
 ```
 
-## 2.HTML5 的 Hist 模式
+## 2.HTML5 的 History 模式
 
 前面说过改变路径的方式有两种:
 
@@ -144,15 +144,27 @@ const router = new VueRouter({
 
 ## 3.router-link
 
-在前面的<router-link>中，我们只是使用了一个属性: to，用于指定跳转的路径
+`<router-link>`: 该标签是一个 vue-router 中已经内置的组件, 它会被渲染成一个`<a>`标签
 
-<router-link>还有一些其他属性：
+`<router-link>`属性：
 
-- tag: tag 可以指定<router-link>之后渲染成什么组件，比如上面的代码会被渲染成一个<li>元素，而不是<a>
+- to：用于指定跳转的路径
+
+- tag: tag 可以指定`<router-link>`之后渲染成什么组件，比如上面的代码会被渲染成一个`<li>`元素，而不是`<a>`
 - replace: replace 不会留下 history 记录，所以指定 replace 的情况下，后退键返回不能返回到上一个页面中
-- active-class: 当<router-link>对应的路由匹配成功时，会自动给当前元素设置一个 router-link-active 的 class，设置 active-class 可以修改默认的名称
+- active-class: 当`<router-link>`对应的路由匹配成功时，会自动给当前元素设置一个 router-link-active 的 class，设置 active-class 可以修改默认的名称
+  - 在进行高亮显示的导航菜单或者底部 tabbar 时, 会使用到该类
+  - 但是通常不会修改类的属性, 会直接使用默认的 router-link-active 即可
 
-## 4.修改 linkActiveClass
+## 4.router-view
+
+`<router-view>`：该标签会根据当前的路径, 动态渲染出不同的组件
+
+网页的其他内容, 比如顶部的标题/导航, 或者底部的一些版权信息等会和`<router-view>`处于同一个等级
+
+在路由切换时, 切换的是`<router-view>`挂载的组件, 其他内容不会发生改变
+
+## 5.修改 linkActiveClass
 
 通过 active-class 修改默认的 router-link-active 的类名
 
@@ -162,13 +174,13 @@ const router = new VueRouter({
 });
 ```
 
-## 5.路由代码跳转
+## 6.路由代码跳转
 
 有时候, 页面的跳转可能需要执行对应的 JavaScript 代码，这个时候，就可以使用第二种跳转方式了
 
 ![](assets/2020-07-02-14-17-31.png)
 
-## 6.动态路由
+## 7.动态路由
 
 在某些情况下，一个页面的 path 路径可能是不确定的，比如我们进入用户界面时，希望是如下的路径`/user/aaaa或/user/bbbb`，除了有前面的/user 之外，后面还跟上了用户的 ID
 
@@ -205,6 +217,12 @@ const router = new VueRouter({
 - 创建对应的子组件，并且在路由映射中配置对应的子路由
 - 在组件内部使用<router-view>标签
 
+![](assets/2020-07-26-21-13-01.png)
+
+![](assets/2020-07-26-21-13-17.png)
+
+![](assets/2020-07-26-21-13-40.png)
+
 # 传递参数
 
 传递参数主要有两种类型: params 和 query
@@ -223,7 +241,29 @@ query 的类型:
 
 使用也有两种方式: <router-link>的方式和 JavaScript 代码方式
 
-获取参数通过$route 对象获取的。在使用了 vue-router 的应用中，路由对象会被注入每个组件中，赋值为 this.$route ，并且当路由切换时，路由对象会被更新
+```vue
+<router-link
+  :to="{ path: '/profile/' + userId, query: { name: 'cherry', age: 18 } }"
+  tag="button">Profile</router-link>
+```
+
+![](assets/2020-07-26-21-20-34.png)
+
+```vue
+methods:{ toProfile() { this.$router.push({ path: '/profile/' + userId', query:
+{ name: 'cherry', age: 18 } }) } }
+```
+
+# 获取参数
+
+通过$route 对象获取的。在使用了 vue-router 的应用中，路由对象会被注入每个组件中，赋值为 this.$route ，并且当路由切换时，路由对象会被更新
+
+```vue
+<p>params：{{this.$route.params}}</p>
+<p>query：{{this.$route.query}}</p>
+```
+
+![](assets/2020-07-26-21-34-04.png)
 
 # $route和$router
 
@@ -242,6 +282,10 @@ vue-router 提供了 beforeEach 和 afterEach 的钩子函数, 它们会在路�
 - to: 即将要进入的目标的路由对象.
 - from: 当前导航即将要离开的路由对象.
 - next: 调用该方法后, 才能进入下一个钩子
+
+通过导航守卫修改网页的 title
+
+![](assets/2020-07-26-21-47-08.png)
 
 如果是后置钩子, 也就是 afterEach, 不需要主动调用 next()函数
 
