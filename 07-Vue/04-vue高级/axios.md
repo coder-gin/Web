@@ -74,7 +74,8 @@ axios
 - 这个时候我们可以进行一些抽取,也可以利用 axios 的全局配置
 
 ```js
-axios.defaults.baseURL = ‘123.207.32.32:8000’axios.defaults.headers.post[‘Content-Type’] = ‘application/x-www-form-urlencoded’;
+axios.defaults.baseURL = ‘123.207.32.32:8000’
+axios.defaults.headers.post[‘Content-Type’] = ‘application/x-www-form-urlencoded’;
 ```
 
 # axios 的实例
