@@ -1,39 +1,25 @@
-# 模块的选择
+# axios 特点
 
-Vue 中发送网络请求有非常多的方式，那么, 在开发中, 如何选择呢?
+1. 基本 promise 的异步 ajax 请求库
+2. 浏览器端/node 端都可以使用
+3. 支持请求／响应拦截器
+4. 支持请求取消
+5. 请求/响应数据转换
+6. 批量发送多个请求
 
-传统的 Ajax 是基于 XMLHttpRequest(XHR)，为什么不用它呢?非常好解释，配置和调用方式等非常混乱。编码起来看起来就非常蛋疼。所以真实开发中很少直接使用，而是使用 jQuery-Ajax
+# axios 常用语法
 
-在前面的学习中，我们经常会使用 jQuery-Ajax，相对于传统的 Ajax 非常好用
-
-为什么不选择它呢?首先，我们先明确一点: 在 Vue 的整个开发中都是不需要使用 jQuery 了。那么，就意味着为了方便我们进行一个网络请求，特意引用一个 jQuery，你觉得合理吗?jQuery 的代码 1w+行.Vue 的代码才 1w+行。完全没有必要为了用网络请求就引用这个重量级的框架
-
-官方在 Vue1.x 的时候，推出了 Vue-resource。但在 Vue2.0 退出后，Vue 作者就在 GitHub 的 Issues 中说明了去掉 vue-resource，并且以后也不会再更新
-
-在说明不再继续更新和维护 vue-resource 的同时，作者还推荐了一个框架: axios。axios 有非常多的优点，并且用起来也非常方便
-
-# 认识 axios
-
-功能特点：
-
-- 在浏览器中发送 XMLHttpRequests 请求
-- 在 node.js 中发送 http 请求
-- 支持 Promise API
-- 拦截请求和响应
-- 转换请求和响应数据
-
-# axiox 请求方式
-
-支持多种请求方式:
-
-- `axios(config)`
-- `axios.request(config)`
-- `axios.get(url[, config])`
-- `axios.delete(url[, config])`
-- `axios.head(url[, config])`
-- `axios.post(url[, data[, config]])`
-- `axios.put(url[, data[, config]])`
-- `axios.patch(url[, data[, config]])`
+- axios(config): 通用/最本质的发任意类型请求的方式
+- axios(url[, config]): 可以只指定 url 发 get 请求
+- axios.request(config): 等同于 axios(config)
+- axios.get(url[, config]): 发 get 请求
+- axios.delete(url[, config]): 发 delete 请求
+- axios.post(url[, data, config]): 发 post 请求
+- axios.put(url[, data, config]): 发 put 请求
+- axios.defaults.xxx: 请求的默认全局配置
+- axios.interceptors.request.use(): 添加请求拦截器
+- axios.interceptors.response.use(): 添加响应拦截器
+- axios.create([config]): 创建一个新的 axios
 
 # 发送基本请求
 
