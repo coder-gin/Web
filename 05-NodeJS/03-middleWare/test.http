@@ -1,0 +1,19 @@
+@url = http://localhost:3000
+
+###
+GET  {{url}}
+
+###
+GET  {{url}}/two
+
+###
+POST {{url}}/demo
+Content-Type: application/json;charset=UTF-8
+
+{
+  "userName": "sunny",
+  "age": 18
+}
+
+###
+GET {{url}}/index.html

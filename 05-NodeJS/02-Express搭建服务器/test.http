@@ -1,0 +1,10 @@
+@url = http://localhost:3000
+
+###
+GET {{url}}/
+
+###
+GET {{url}}/two
+
+###
+POST {{url}}/three
