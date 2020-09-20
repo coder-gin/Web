@@ -1,10 +1,12 @@
 import Vue from 'vue'
 import App from './App'
 // import axios from 'axios'
-import { request } from './network/request'
+// import { request } from './network/request'
+import * as api from './api/api'
 
 Vue.config.productionTip = false
 
+Vue.prototype.$api = api
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
@@ -94,8 +96,8 @@ instance2({
 
 // 5.封装
 
-request({
-  url: '/home/multidata',
-})
-  .then(res => console.log(res))
-  .catch(err => console.log(err))
+// request({
+//   url: '/home/multidata',
+// })
+//   .then(res => console.log(res))
+//   .catch(err => console.log(err))

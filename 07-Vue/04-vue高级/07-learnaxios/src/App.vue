@@ -1,19 +1,20 @@
 <template>
   <div id="app">
-    <div>{{result}}</div>
+    <!-- <div>{{result}}</div> -->
     <div>-------------------------------</div>
-    <HelloWorld></HelloWorld>
+    <!-- <HelloWorld></HelloWorld> -->
   </div>
 </template>
 
 <script>
-import { request } from '@/network/request'
-import HelloWorld from '@/components/HelloWorld'
+// import { request } from '@/network/request'
+// import HelloWorld from '@/components/HelloWorld'
+// import { getCategories } from './api/api'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    // HelloWorld
   },
   data () {
     return {
@@ -21,12 +22,15 @@ export default {
     }
   },
   created () {
-    request({
-      url: '/home/multidata'
-    })
-      .then(res => {
-        this.result = res
-      })
+    console.log(this.$api.getCategories().baseURL)
+    this.$api.getCategories().then(res => console.log(res))
+    // getCategories().then(res => console.log(res))
+    // request({
+    //   url: '/home/multidata'
+    // })
+    //   .then(res => {
+    //     this.result = res
+    //   })
   },
 
 }
